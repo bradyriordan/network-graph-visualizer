@@ -2,11 +2,11 @@
 
 ## Description
 
-Network Diagram Visualizer is a React SPA where you can enter JSON and render a network graph with nodes and alarms.
+Network Diagram Visualizer is a React SPA where you can enter JSON and render a network graph with nodes and alarms. It's built using `create-react-app`, `react-d3-graph` and `ace-editor`.
 
 ## Demo
 
-Insert link
+[Try it out!](https://6042b2c64c11ab0c2278db7f--flamboyant-engelbart-4100eb.netlify.app/)
 
 ## Project Screen Shots
 
@@ -40,7 +40,7 @@ Insert link
 			"label": "Alarm 1",
 			"type": "alarm"
 		},
-{
+		{
 			"id": "a2",
 			"label": "Alarm 2",
 			"type": "alarm"

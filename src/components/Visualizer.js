@@ -6,6 +6,9 @@ const myConfig = {
     nodeHighlightBehavior: true,
     width: 1000,
     height: 700,
+    d3:{
+        gravity: -400,
+    },
     node: {
         color: "lightgreen",
         size: 500,

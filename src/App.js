@@ -5,11 +5,12 @@ import Button from './components/Button'
 import Visualizer from './components/Visualizer'
 import Editor from './components/Editor'
 import ErrorBoundary from './components/ErrorBoundary'
+import sampleData from './lib/SampleData'
 
 
 function App() {
   const [showEditor, setShowEditor] = useState(false)  
-  const [data, setData] = useState(null)  
+  const [data, setData] = useState(JSON.stringify(sampleData))  
   const [cleanData, setCleanData] = useState(null)
   const [dataError, setDataError] = useState(null)
   const [formatDataError, setFormatDataError] = useState(false)

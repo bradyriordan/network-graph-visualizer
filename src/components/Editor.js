@@ -19,7 +19,7 @@ const Editor = ({ show, data, handleDataChange, submitData, dataError }) => {
             
             <li>
                 <h5>Enter JSON</h5>
-                <div><a href="https://github.com/bradyriordan" target="_blank" rel="noreferrer">View formatting requirements</a></div>
+                <div><a href="https://github.com/bradyriordan/network-graph-visualizer#json-formatting-rules" target="_blank" rel="noreferrer">View formatting requirements</a></div>
             </li>
             <li>
                 {dataError ? <Error /> : ''} 

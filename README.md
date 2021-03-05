@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Network Diagram Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Network Diagram Visualizer is a React SPA where you can enter JSON and render a network graph with nodes and alarms.
 
-In the project directory, you can run:
+## Demo
 
-### `yarn start`
+Insert link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Screen Shots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![JSON Editor](/images/json_editor.JPG?raw=true "JSON Editor")
 
-### `yarn test`
+![Network Graph](/images/network_graph.JPG?raw=true "Rendered Network Graph")
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## JSON Formatting Rules
 
-### `yarn build`
+- There must be a `vertices` and `edges` element that hold an array of objects
+- Each vertices object must have an `id`, `label` and `type` property
+- The vertex `type` must be either `alarm` or `node` 
+- Each edge object must have an `id`, `label`, `type`, `source_id` and `target_id` property
+- All `source_id` and `target_id` in `edges` must exist in the `vertices` object 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Example JSON
+```
+{
+	"vertices": [{
+			"id": "n1",
+			"label": "Node 1",
+			"type": "node"
+		},
+		{
+			"id": "n2",
+			"label": "Node 2",
+			"type": "node"
+		},
+		{
+			"id": "a1",
+			"label": "Alarm 1",
+			"type": "alarm"
+		},
+{
+			"id": "a2",
+			"label": "Alarm 2",
+			"type": "alarm"
+		}
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+	],
+	"edges": [{
+			"id": "e1",
+			"label": "edge n1-n2",
+			"type": "link",
+			"source_id": "n1",
+			"target_id": "n2"
+		},
+		{
+			"id": "e2",
+			"label": "edge n2-a1",
+			"type": "link",
+			"source_id": "n2",
+			"target_id": "a1"
+		},
+		{
+			"id": "e3",
+			"label": "edge n1-a2",
+			"type": "link",
+			"source_id": "n1",
+			"target_id": "a2"
+		}
+	]
+}
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Installation and Setup Instructions
 
-### `yarn eject`
+Clone this repository. You will need `node` and `npm` installed globally on your machine.  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Installation:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm install`  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To Run Test Suite:  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`npm test`  
 
-## Learn More
+To Start Server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm start`  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To Visit App:
 
-### Code Splitting
+`localhost:3000`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Contributing
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pull requests, bug reports, and feature requests are welcome.

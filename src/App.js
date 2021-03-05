@@ -1,23 +1,73 @@
-import logo from './logo.svg';
+import { useState } from 'react'
 import './App.css';
+import Nav from './components/Nav'
+import Button from './components/Button'
+import Visualizer from './components/Visualizer'
+import Editor from './components/Editor'
+import ErrorBoundary from './components/ErrorBoundary'
+
 
 function App() {
+  const [showEditor, setShowEditor] = useState(false)  
+  const [data, setData] = useState(null)  
+  const [cleanData, setCleanData] = useState(null)
+  const [dataError, setDataError] = useState(null)
+  const [formatDataError, setFormatDataError] = useState(false)
+
+  const toggleEditor = (e) => {
+    if(e) {e.preventDefault()};    
+    setShowEditor(!showEditor)    
+  }
+
+  const handleDataChange = (event) => {
+    // remove carriage, line and tab returns
+    setData(event.replace(/\\./g, ''))   
+  }
+
+  const throwFormatDataError = () => {
+    setFormatDataError(true)
+  }
+
+  const throwDataError = () => {
+    setDataError(true)
+  }
+
+  const submitData = (e) => {
+    // prevent rerender
+    e.preventDefault();     
+    // send data for validation
+    validateData(data);    
+  }
+
+  const validateData = input => {
+    try {
+      console.log(JSON.parse(input))
+      // only update visualizer when data is submitted
+      setCleanData(data)
+      setDataError(false) 
+      // format data error handled in error boundary component
+      setFormatDataError(false)
+    } catch (e) {      
+      setDataError(true)
+      console.log(e)
+    }   
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="row app-container">
+        <Nav />
+        <div className="main">
+          <Button toggleEditor={toggleEditor} />
+          <Editor show={showEditor} submitData={submitData} data={data} handleDataChange={handleDataChange} dataError={dataError}/>          
+          <div className="col s12">
+            {/* For handling render errors not possible with try/catch block */}
+            <ErrorBoundary key={formatDataError} formatDataError={formatDataError} throwDataError={throwDataError} throwFormatDataError={throwFormatDataError}  >
+              <Visualizer data={cleanData}/>
+            </ErrorBoundary>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

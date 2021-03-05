@@ -10,9 +10,9 @@ Insert link
 
 ## Project Screen Shots
 
-![JSON Editor](/images/json_editor.JPG?raw=true "JSON Editor")
+![JSON Editor](src/images/json_editor.JPG?raw=true "JSON Editor")
 
-![Network Graph](/images/network_graph.JPG?raw=true "Rendered Network Graph")
+![Network Graph](src/images/network_graph.JPG?raw=true "Rendered Network Graph")
 
 ## JSON Formatting Rules
 

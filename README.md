@@ -2,7 +2,21 @@
 
 ## Description
 
-Network Diagram Visualizer is a React SPA where you can enter JSON and render a network graph with nodes and alarms. It's built using `create-react-app`, `react-d3-graph` and `ace-editor`.
+Network Diagram Visualizer is a React SPA that renders a network graph using a given JSON payload. A graph node can be either a node or an alarm, each with a corresponding icon. It's built using `create-react-app`, `react-d3-graph`, `ace-editor` and styled with `react-materialize`.
+
+## Rationale for React D3 Graph
+
+D3.js is a robust, well-supported and very popular visualization library that supports many graph types, including network graphs. `react-d3-graph` is an npm package built specifically for rendering d3 network graphs in react. It's popular, well-documented and highly configurable. There are 56 configurations that can be set in a graph's `config` attribute. I investigated `react-vis-network-graph` and `cytoscape` and their configuration options, styling and documentation fell well short of `react-d3-graph`.
+
+## Todo
+
+- Improve mobile view
+- Add more tests
+- Add more sample data
+- Format default sample data
+- Add specific data error messages
+- Improve error handling
+- Refactor 
 
 ## Demo
 

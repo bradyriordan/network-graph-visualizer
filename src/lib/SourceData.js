@@ -1,4 +1,5 @@
-const sampleData = {
+const sourceData = {
+
     "vertices": [{
         "id": "n1",
         "label": "Node 1",
@@ -8,7 +9,13 @@ const sampleData = {
         "id": "n2",
         "label": "Node 2",
         "type": "node"
+    },
+    {
+        "id": "a1",
+        "label": "Alarm 1",
+        "type": "alarm"
     }
+
     ],
     "edges": [{
         "id": "e1",
@@ -16,8 +23,15 @@ const sampleData = {
         "type": "link",
         "source_id": "n1",
         "target_id": "n2"
+    },
+    {
+        "id": "e2",
+        "label": "edge n2-a1",
+        "type": "link",
+        "source_id": "n2",
+        "target_id": "a1"
     }
     ]
 }
 
-export default sampleData;
+export default sourceData;

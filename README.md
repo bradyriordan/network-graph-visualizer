@@ -6,7 +6,7 @@ Network Diagram Visualizer is a React SPA where you can enter JSON and render a 
 
 ## Demo
 
-[Try it out!](https://6042b2c64c11ab0c2278db7f--flamboyant-engelbart-4100eb.netlify.app/)
+[Demo app:](https://flamboyant-engelbart-4100eb.netlify.app/)
 
 ## Project Screen Shots
 

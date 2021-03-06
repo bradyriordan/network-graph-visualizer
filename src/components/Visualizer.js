@@ -1,5 +1,5 @@
 import { Graph } from "react-d3-graph"
-import transformData from '../lib/transformData'
+import transformData from '../lib/TransformData'
 
 // the graph configuration, just override the ones you need
 const myConfig = {
@@ -11,12 +11,14 @@ const myConfig = {
     },
     node: {
         color: "lightgreen",
-        size: 500,
+        size: 400,
         highlightStrokeColor: "orange",
         directed: true,
         fontSize: 15,
+        highlightFontSize: "SAME",
         strokeWidth: 5,
-        renderLabel: false
+        renderLabel: true,
+        labelProperty: "label",
     },
     link: {
         highlightColor: "lightblue",

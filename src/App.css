@@ -30,6 +30,10 @@
   width: 40%;
 }
 
+.sidenav li {
+  line-height: inherit;
+}
+
 @media only screen and (max-width: 600px) {
   .sidenav {
     width: 66%;

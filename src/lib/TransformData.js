@@ -2,14 +2,10 @@ import Alarm from '../images/alarm.svg'
 import Device from '../images/device.svg'
 
 const transformData = (data) => {
-    let nodes = [];
-    let links = []; 
+    var nodes = [];
+    var links = []; 
     var sourceData;
-    if (typeof data === 'string') {
-        sourceData = JSON.parse(data)
-    } else {
-        sourceData = data
-    }
+    typeof data === 'string' ? sourceData = JSON.parse(data) : sourceData = data
     if (sourceData != null && Object.entries(sourceData).length > 0) {
         if(sourceData.vertices){
             sourceData.vertices.forEach(item => {

@@ -1,6 +1,6 @@
 import { Graph } from "react-d3-graph"
 import transformData from '../lib/TransformData'
-import useWindowDimensions from '../lib/useWindowDimenstions'
+import useWindowDimensions from '../lib/useWindowDimensions'
 
 const VisualizerThree = ({ data }) => {
 

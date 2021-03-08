@@ -8,9 +8,9 @@ class ErrorBoundary extends React.Component {
   
     componentDidCatch(error, info) {
       // Display fallback UI
-      this.props.throwFormatDataError();
-      this.props.throwDataError();
-      this.setState({ hasError: this.props.formatDataError });      
+      this.props.throwReactD3GraphError();
+      this.props.throwJSONFormatError();
+      this.setState({ hasError: this.props.reactD3GraphError });      
     }
   
     render() {

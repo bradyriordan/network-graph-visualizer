@@ -12,8 +12,8 @@ function App() {
   const [showEditor, setShowEditor] = useState(false)  
   const [data, setData] = useState(JSON.stringify(sampleData))  
   const [cleanData, setCleanData] = useState(null)
-  const [dataError, setDataError] = useState(null)
-  const [formatDataError, setFormatDataError] = useState(false)
+  const [JSONformatError, setJSONFormatError] = useState(null)
+  const [reactD3GraphError, setReactD3GraphError] = useState(false)
 
   const toggleEditor = (e) => {
     if(e) {e.preventDefault()};    
@@ -25,12 +25,12 @@ function App() {
     setData(event.replace(/\\./g, ''))   
   }
 
-  const throwFormatDataError = () => {
-    setFormatDataError(true)
+  const throwReactD3GraphError = () => {
+    setReactD3GraphError(true)
   }
 
-  const throwDataError = () => {
-    setDataError(true)
+  const throwJSONFormatError = () => {
+    setJSONFormatError(true)
   }
 
   const submitData = (e) => {
@@ -45,11 +45,11 @@ function App() {
       console.log(JSON.parse(input))
       // only update visualizer when data is submitted
       setCleanData(data)
-      setDataError(false) 
+      setJSONFormatError(false) 
       // format data error handled in error boundary component
-      setFormatDataError(false)
+      setReactD3GraphError(false)
     } catch (e) {      
-      setDataError(true)
+      setJSONFormatError(true)
       console.log(e)
     }   
   }
@@ -60,10 +60,10 @@ function App() {
         <Nav />
         <div className="main">
           <Button toggleEditor={toggleEditor} />
-          <Editor show={showEditor} submitData={submitData} data={data} handleDataChange={handleDataChange} dataError={dataError}/>          
+          <Editor show={showEditor} submitData={submitData} data={data} handleDataChange={handleDataChange} JSONformatError={JSONformatError}/>          
           <div className="col s12">
             {/* For handling render errors not possible with try/catch block */}
-            <ErrorBoundary key={formatDataError} formatDataError={formatDataError} throwDataError={throwDataError} throwFormatDataError={throwFormatDataError}  >
+            <ErrorBoundary key={reactD3GraphError} reactD3GraphError={reactD3GraphError} throwJSONFormatError={throwJSONFormatError} throwReactD3GraphError={throwReactD3GraphError}  >
               <Visualizer data={cleanData}/>
             </ErrorBoundary>
           </div>

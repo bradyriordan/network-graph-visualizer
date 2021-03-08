@@ -5,7 +5,7 @@ import Error from './Error'
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-github"
 
-const Editor = ({ show, data, handleDataChange, submitData, dataError }) => {
+const Editor = ({ show, data, handleDataChange, submitData, JSONformatError }) => {
 
     useEffect(() => {
         M.AutoInit();
@@ -22,7 +22,7 @@ const Editor = ({ show, data, handleDataChange, submitData, dataError }) => {
                 <div><a href="https://github.com/bradyriordan/network-graph-visualizer#json-formatting-rules" target="_blank" rel="noreferrer">View formatting requirements</a></div>
             </li>
             <li>
-                {dataError ? <Error /> : ''} 
+                {JSONformatError ? <Error /> : ''} 
                     <div className="editor-content">
                         <AceEditor 
                         theme="github"

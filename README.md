@@ -33,7 +33,7 @@ D3.js is a robust, well-supported and very popular visualization library that su
 - There must be a `vertices` and `edges` element that hold an array of objects
 - Each vertices object must have an `id`, `label` and `type` property
 - The vertex `type` must be either `alarm` or `node` 
-- Each edge object must have an `id`, `label`, `type`, `source_id` and `target_id` property
+- Each edge object must have a `source_id` and `target_id` property
 - All `source_id` and `target_id` in `edges` must exist in the `vertices` object 
 
 ## Example JSON

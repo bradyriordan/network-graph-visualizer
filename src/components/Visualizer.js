@@ -6,19 +6,18 @@ const VisualizerThree = ({ data }) => {
 
     const { height, width } = useWindowDimensions();
 
-    // the graph configuration, just override the ones you need
+    // Graph configuration - you can generate a config automatically here: https://danielcaldas.github.io/react-d3-graph/sandbox/index.html 
     const myConfig = {
         nodeHighlightBehavior: true,
         width: width - 75,
         height: height - 100,
-        d3:{
+        d3: {
             gravity: -400,
         },
         node: {
             color: "lightgreen",
             size: 400,
             highlightStrokeColor: "orange",
-            directed: true,
             fontSize: 15,
             highlightFontSize: "SAME",
             strokeWidth: 5,

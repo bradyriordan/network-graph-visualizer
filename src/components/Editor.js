@@ -5,7 +5,7 @@ import Error from './Error'
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-github"
 
-const Editor = ({ show, data, handleDataChange, dataError }) => {
+const Editor = ({ show, data, handleDataChange, dataError, submitData }) => {
 
     useEffect(() => {
         M.AutoInit();
@@ -36,7 +36,7 @@ const Editor = ({ show, data, handleDataChange, dataError }) => {
                             }} />
                     </div>
                 </li>
-
+                <a href="/" className={`waves-effect waves-light btn blue darken-4 btn-large`} onClick={(e) => submitData(e)}><i className="material-icons right">refresh</i>Render Graph</a>
             </ul>
         </>
     )

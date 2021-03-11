@@ -35,7 +35,7 @@ const isValidVertices = data => {
         if (!vertices[i].hasOwnProperty("label")) {
             return new Error(`The vertex in position ${i + 1} doesn't have a label property`)
         }
-        // Check for the label property
+        // Check for the type property
         if (!vertices[i].hasOwnProperty("type")) {
             return new Error(`The vertex in position ${i + 1} doesn't have a type property`)
         }

@@ -10,7 +10,7 @@ import DataValidator from './lib/DataValidator'
 
 function App() {
   const [showEditor, setShowEditor] = useState(false)
-  const [data, setData] = useState(JSON.stringify(sampleData))
+  const [data, setData] = useState(JSON.stringify(sampleData))   
   const [cleanData, setCleanData] = useState(null)
   const [dataError, setDataError] = useState({ json: null, edges: null, vertices: null })
 
@@ -24,17 +24,17 @@ function App() {
     setData(event.replace(/\\./g, ''))
   }
 
-  // validate data when data changes - on every keystroke
+  const submitData = (e) => {
+    e.preventDefault()
+    const isValidData = !Object.values(dataError).some(error => error !== null)
+    if(isValidData){ setCleanData(data) }
+  }
+
+  // validate data on every keystroke
   useEffect(() => {
     setDataError(DataValidator(data))
   }, [data])
-
-  // build graph only when there are no errors
-  useEffect(() => {
-    const isValidData = !Object.values(dataError).some(error => error !== null)
-    if (isValidData) { setCleanData(data) }
-  }, [dataError])
-
+  
   return (
     <div className="App">
       <div className="row app-container">
@@ -46,6 +46,7 @@ function App() {
             data={data}
             handleDataChange={handleDataChange}
             dataError={dataError}
+            submitData={submitData}
           />
           <div className="col s12">
             <Visualizer data={cleanData} />

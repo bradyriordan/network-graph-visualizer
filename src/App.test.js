@@ -3,9 +3,9 @@ import App from './App';
 import TransformData from './lib/TransformData'
 import SampleData from './data/SampleData'
 import DataValidator from './lib/DataValidator'
-import InvalidEdges from './data/InvalidEdges.test';
-import DuplicateVertexIDs from './data/DuplicateVertexIDs.test';
-import InvalidVertices from './data/InvalidVertices.test'
+import InvalidEdges from './data/InvalidEdges';
+import DuplicateVertexIDs from './data/DuplicateVertexIDs';
+import InvalidVertices from './data/InvalidVertices'
 
 
 const transformedData = TransformData(SampleData);

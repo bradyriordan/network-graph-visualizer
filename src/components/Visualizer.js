@@ -2,7 +2,7 @@ import { Graph } from "react-d3-graph"
 import transformData from '../lib/TransformData'
 import useWindowDimensions from '../lib/useWindowDimensions'
 
-const VisualizerThree = ({ data }) => {
+const Visualizer = ({ data }) => {
 
     const { height, width } = useWindowDimensions();
 
@@ -53,5 +53,5 @@ const VisualizerThree = ({ data }) => {
 
 }
 
-export default VisualizerThree;
+export default Visualizer;
 

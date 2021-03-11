@@ -6,10 +6,6 @@
   padding: 20px;
 }
 
-.modal {
-  padding: 20px;
-}
-
 .data-error {
   background-color: #ef5350;
   font-weight: bold;
@@ -28,14 +24,20 @@
 
 .sidenav {
   width: 40%;
+  padding: 10px;
+}
+
+.close-editor{
+  position: absolute;
+  right: 10px
 }
 
 .sidenav li {
   line-height: inherit;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .sidenav {
-    width: 80%;
+    width: 100%;
   }
 }

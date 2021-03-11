@@ -10,12 +10,12 @@ D3.js is a robust, well-supported and very popular visualization library that su
 
 ## Todo
 
-- Improve mobile view
+- ~~Improve mobile view~~
 - Add more tests
 - Add more sample data
 - Format default sample data
-- Add specific data error messages
-- Improve error handling
+- ~~Add specific data error messages~~
+- ~~Improve error handling~~
 - Refactor 
 
 ## Demo

@@ -9,7 +9,7 @@ import DataValidator from './lib/DataValidator'
 
 
 function App() {
-  const [showEditor, setShowEditor] = useState(false)
+  const [showEditor, setShowEditor] = useState(true)  
   const [data, setData] = useState(JSON.stringify(sampleData))   
   const [cleanData, setCleanData] = useState(null)
   const [dataError, setDataError] = useState({ json: null, edges: null, vertices: null })
@@ -17,7 +17,7 @@ function App() {
   const toggleEditor = (e) => {
     if (e) { e.preventDefault() };
     setShowEditor(!showEditor)
-  }
+  }  
 
   const handleDataChange = (event) => {
     // remove carriage, line and tab returns
@@ -27,7 +27,10 @@ function App() {
   const submitData = (e) => {
     e.preventDefault()
     const isValidData = !Object.values(dataError).some(error => error !== null)
-    if(isValidData){ setCleanData(data) }
+    if(isValidData){ 
+      setCleanData(data)
+      toggleEditor() 
+    }
   }
 
   // validate data on every keystroke
@@ -42,7 +45,8 @@ function App() {
         <div className="main">
           <Button toggleEditor={toggleEditor} />
           <Editor
-            show={showEditor}
+            toggleEditor={toggleEditor}
+            showEditor={showEditor}            
             data={data}
             handleDataChange={handleDataChange}
             dataError={dataError}

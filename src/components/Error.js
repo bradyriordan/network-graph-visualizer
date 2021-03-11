@@ -3,18 +3,20 @@ import React from 'react'
 const Error = ({ dataError }) => {
     return (
         <>
-            <p className="data-error scale-transition">Whoops! Looks like there is an error. Fix the error and try again!</p>
-
-            {/* Convert error object values to array and display them if they exist */}
-            {Object.values(dataError).map((item, i) => {
-                if (item !== null) {
-                    return (
-                        <p>{item.error}</p>
-                    )
+            <div className="data-error scale-transition">JSON Error:
+            <ul>
+                {/* Convert error object values to array and display them if they exist */}
+                    {Object.values(dataError).map((item, i) => {
+                        if (item !== null) {
+                            return (
+                                <li>{item.error}</li>
+                            )
+                        }
+                        return false
+                    })
                 }
-                return false
-            })
-            }
+            </ul>
+            </div>
         </>
     )
 }

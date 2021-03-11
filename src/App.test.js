@@ -1,11 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import transformData from './lib/TransformData'
-import sourceData from './lib/SourceData'
-import sampleData from './lib/SampleData'
+import TransformData from './lib/TransformData'
+import SampleData from './data/SampleData'
+import DataValidator from './lib/DataValidator'
+import InvalidEdges from './data/InvalidEdges.test';
+import DuplicateVertexIDs from './data/DuplicateVertexIDs.test';
+import InvalidVertices from './data/InvalidVertices.test'
 
 
-const transformedData = transformData(sampleData);
+const transformedData = TransformData(SampleData);
+const validJSON = DataValidator(JSON.stringify(SampleData))
+const inValidJSON = DataValidator('{{}')
+const inValidEdges = DataValidator(JSON.stringify(InvalidEdges))
+const inValidVertices = DataValidator(JSON.stringify(InvalidVertices))
+const duplicateVertexIDs = DataValidator(JSON.stringify(DuplicateVertexIDs))
 
 test('renders network graph', () => {
   render(<App />);
@@ -15,32 +23,24 @@ test('renders network graph', () => {
 
 test('renders edit code button', () => {
   render(<App />);
-  const linkElement = screen.getByText(/edit code/i);
+  const linkElement = screen.getByText(/edit json/i);
   expect(linkElement).toBeInTheDocument();
 });
 
 test('sampleData has two vertices', () => {
-  expect(sampleData.vertices).toHaveLength(2)
+  expect(SampleData.vertices).toHaveLength(3)
 });
 
 test('sampleData has one edge', () => {
-  expect(sampleData.edges).toHaveLength(1)
-});
-
-test('sourceData has two vertices', () => {
-  expect(sourceData.vertices).toHaveLength(3)
-});
-
-test('sourceData has one edge', () => {
-  expect(sourceData.edges).toHaveLength(2)
+  expect(SampleData.edges).toHaveLength(2)
 });
 
 test('transformed data from sample data has one link', () => {
-  expect(transformedData.links).toHaveLength(1)
+  expect(transformedData.links).toHaveLength(2)
 });
 
 test('transformed data from sample data has two nodes', () => {
-  expect(transformedData.nodes).toHaveLength(2)
+  expect(transformedData.nodes).toHaveLength(3)
 });
 
 test('transformed data from sample data has source property', () => {
@@ -49,4 +49,36 @@ test('transformed data from sample data has source property', () => {
 
 test('transformed data from sample data has target property', () => {
   expect(transformedData.links[0].target).toEqual('n2')
+})
+
+test('data validator returns object with json property', () => {
+  expect(validJSON).toHaveProperty('json')
+})
+
+test('data validator returns object with edges property', () => {
+  expect(validJSON).toHaveProperty('edges')
+})
+
+test('data validator returns object with vertices property', () => {
+  expect(validJSON).toHaveProperty('vertices')
+})
+
+test('valid json returns object with correct shape and all null values', () => {
+  expect(validJSON).toMatchObject({edges: null, json: null, vertices: null})
+})
+
+test('invalid json returns object with json error', () => {
+  expect(inValidJSON.json.error).toEqual('Invalid JSON')
+})
+
+test('invalid edges returns object with correct edges error', () => {
+  expect(inValidEdges.edges.error).toEqual('The source_id in edge in position 1 doesn\'t have an associated vertex')
+})
+
+test('invalid vertices returns object with correct vertices error', () => {
+  expect(inValidVertices.vertices.error).toEqual('The vertex in position 1 needs a node or alarm type')
+})
+
+test('duplicate vertex ids returns object with correct vertices error', () => {
+  expect(duplicateVertexIDs.vertices.error).toEqual('Your vertices object has duplicate ids')
 })

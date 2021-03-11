@@ -4,13 +4,13 @@ import Nav from './components/Nav'
 import Button from './components/Button'
 import Visualizer from './components/Visualizer'
 import Editor from './components/Editor'
-import sampleData from './lib/SampleData'
+import SampleData from './data/SampleData'
 import DataValidator from './lib/DataValidator'
 
 
 function App() {
   const [showEditor, setShowEditor] = useState(true)  
-  const [data, setData] = useState(JSON.stringify(sampleData))   
+  const [data, setData] = useState(JSON.stringify(SampleData))   
   const [cleanData, setCleanData] = useState(null)
   const [dataError, setDataError] = useState({ json: null, edges: null, vertices: null })
 
